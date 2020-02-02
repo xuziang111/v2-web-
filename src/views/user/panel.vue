@@ -173,7 +173,6 @@ export default {
           x.className = "";
         });
         e.target.className = "uim-anchor-active";
-        console.log(e.target.id);
         if (e.target.id === "cards1") {
           this.ifLinkMessage = false;
           this.ifkeyongziyuan = true;

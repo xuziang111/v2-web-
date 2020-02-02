@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <el-button>el-button</el-button>
-    <router-view></router-view>
+    <el-container>
+      <el-header>Header</el-header>
+        <router-view id="views-container"></router-view>
+      <el-footer>Footer</el-footer>
+    </el-container>
   </div>
 </template>
 
@@ -12,6 +15,7 @@ export default {
   components: {
 
   }
+
 };
 </script>
 
@@ -21,6 +25,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height:100%;
 }
 </style>

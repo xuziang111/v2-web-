@@ -5,6 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+      get UserToken() {
+        return localStorage.getItem('token')
+      },
+      set UserToken(value) {
+        localStorage.setItem('token', value)
+      },
     userInfo:{
       username:'用户名',
       vipLv:1,
@@ -24,11 +30,15 @@ export default new Vuex.Store({
       xieyi:'auth_aes12',
       hunxiao:'plain',
       hunxiaocanshu:'wns.wwww',
-    }
-
+    },
   },
   mutations: {
-
+    LOGIN_IN(state, token) {
+      state.UserToken = token
+    },
+    LOGIN_OUT(state) {
+      state.UserToken = ''
+    }
   },
   actions: {},
   modules: {}

@@ -167,8 +167,33 @@ Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 
+import axios from 'axios'
+
+Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false;
+
+// 判断是否存在token，若不存在则进入login，存在则进入对应页面
+router.beforeEach((to, from, next) => {
+  console.log(!store.state.UserToken)
+  console.log(from)
+  console.log(to)
+  if (!store.state.UserToken) {
+    if(to.path==='/auth/login'){
+      console.log('xxx')
+      console.log(from.path)
+      next()
+      return
+    }
+    if (to.matched.length > 0 && !to.matched.some(record => record.meta.requiresAuth)) {
+      next()
+    } else {
+      next({ path: '/auth/login' })
+    }
+  }else{
+    next()
+  }
+})
 
 new Vue({
   router,
